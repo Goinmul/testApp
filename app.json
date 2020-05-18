@@ -1,0 +1,38 @@
+{
+  "expo": {
+    "name": "testApp",
+    "slug": "testApp",
+    "sdkVersion": "37.0.0",
+    "privacy": "public",
+    "android": {
+      "package": "com.test.app",
+      "permissions": [
+        "READ_CONTACTS",
+        "WRITE_CONTACTS"
+      ]
+    },
+    "platforms": [
+      "ios",
+      "android",
+      "web"
+    ],
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "splash": {
+      "image": "./assets/splash.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "updates": {
+      "fallbackToCacheTimeout": 0
+    },
+    "assetBundlePatterns": [
+      "**/*"
+    ],
+    "ios": {
+      "bundleIdentifier": "com.test.app",
+      "supportsTablet": true
+    }
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "700723661373",
+    "firebase_url": "https://sangdaero.firebaseio.com",
+    "project_id": "sangdaero",
+    "storage_bucket": "sangdaero.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:700723661373:android:a9f172630d21c1ce21b854",
+        "android_client_info": {
+          "package_name": "com.test.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "700723661373-kjafb8dl8q16jqcea22vq0mmgc5qqtmo.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBvARDZSagC90mJrcKlF5qx1EUupNzH5MY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "700723661373-kjafb8dl8q16jqcea22vq0mmgc5qqtmo.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "700723661373-9o145cic91qv46alq1qvdqhgn9m6c0qk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.test.app"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
