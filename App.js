@@ -9,7 +9,12 @@ from 'react-navigation';
 import LoginScreen from './screens/LoginScreen';
 import LoadingScreen from './screens/LoadingScreen';
 import DashboardScreen from './screens/DashboardScreen';
-import FormScreen from './network/FormScreen';
+import ActivityListScreen from './screens/ActivityListScreen';
+import FormScreen from './screens/FormScreen';
+
+// sample screens, just for debugging
+import ButtonScreen from './screens_template/buttons';
+
 import * as firebase from 'firebase';
 import { firebaseConfig } from './config';
 
@@ -18,6 +23,7 @@ firebase.initializeApp(firebaseConfig);
 export default function App() {
   return (
     <AppNavigator></AppNavigator>
+
   );
 }
 
@@ -25,7 +31,9 @@ const AppSwitchNavigator = createSwitchNavigator({
   LoadingScreen:LoadingScreen,
   LoginScreen:LoginScreen,
   DashboardScreen:DashboardScreen,
-  FormScreen:FormScreen
+  FormScreen:FormScreen,
+  ActivityListScreen:ActivityListScreen,
+  ButtonScreen:ButtonScreen,
 });
 
 const AppNavigator = createAppContainer
