@@ -11,6 +11,7 @@ import LoadingScreen from './screens/LoadingScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import ActivityListScreen from './screens/ActivityListScreen';
 import FormScreen from './screens/FormScreen';
+import CameraScreen from './screens_camera/CameraScreen';
 
 // sample screens, just for debugging
 import ButtonScreen from './screens_template/buttons';
@@ -34,6 +35,8 @@ const AppSwitchNavigator = createSwitchNavigator({
   FormScreen:FormScreen,
   ActivityListScreen:ActivityListScreen,
   ButtonScreen:ButtonScreen,
+  CameraScreen:CameraScreen
+  
 });
 
 const AppNavigator = createAppContainer
