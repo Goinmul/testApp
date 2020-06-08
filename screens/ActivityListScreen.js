@@ -6,6 +6,7 @@ class ActivityListScreen extends Component {
     
     constructor(){
         super();
+
         this.state = {
 
             // sample json data. should get it from spring server
@@ -39,7 +40,7 @@ class ActivityListScreen extends Component {
     _keyExtractor = (item) => item.id;
 
     render(){
-
+        console.warn(this.props.navigation.getParam('data', 'data passing error from FlatList'),);
         return (
             <View style={styles.container}>
                 <Text>Display Json Data as a List</Text>

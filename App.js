@@ -12,6 +12,8 @@ import DashboardScreen from './screens/DashboardScreen';
 import ActivityListScreen from './screens/ActivityListScreen';
 import FormScreen from './screens/FormScreen';
 import CameraScreen from './screens_camera/CameraScreen';
+import TestScreen from './screens/TestScreen';
+import ListScreen from './screens/ListScreen';
 
 // sample screens, just for debugging
 import ButtonScreen from './screens_template/buttons';
@@ -24,7 +26,6 @@ firebase.initializeApp(firebaseConfig);
 export default function App() {
   return (
     <AppNavigator></AppNavigator>
-
   );
 }
 
@@ -35,7 +36,9 @@ const AppSwitchNavigator = createSwitchNavigator({
   FormScreen:FormScreen,
   ActivityListScreen:ActivityListScreen,
   ButtonScreen:ButtonScreen,
-  CameraScreen:CameraScreen
+  CameraScreen:CameraScreen,
+  TestScreen:TestScreen,
+  ListScreen:ListScreen,
   
 });
 

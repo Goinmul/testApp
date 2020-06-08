@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, Image }
+import { StyleSheet, Text, View, Image, Alert }
   from 'react-native';
 import * as Permissions from 'expo-permissions';
 import * as ImagePicker from 'expo-image-picker';
@@ -24,7 +24,7 @@ class CameraScreen extends Component {
     if (!result.cancelled) {
       this.setState({ image: result.uri });
     } else {
-      console.warn('image selecting error!');
+      console.log('image selecting error!');
       return;
     }
 
@@ -52,7 +52,7 @@ class CameraScreen extends Component {
       headers: {
         'content-type': 'multipart/form-data',
       },
-    }).then(()=>{console.warn('success', url)});
+    }).then(()=>{console.log('success', url)});
   }
 
   async _pickImageFromGallery(url) {
@@ -68,7 +68,7 @@ class CameraScreen extends Component {
     if (!result.cancelled) {
       this.setState({ image: result.uri });
     } else {
-      console.warn('image selecting error!');
+      console.log('image selecting error!');
       return;
     }
     console.log(result);
@@ -136,7 +136,7 @@ class CameraScreen extends Component {
           buttonStyle={{ backgroundColor: 'rgb(1, 192, 99)', height: 50 }}
           titleStyle={{ fontSize: 23 }}
           onPress={() => this._pickImageFromGallery('http://saevom06.cafe24.com/requestdata/newProduct')}
-          title="갤러리에서 전송하기"
+          title="갤러리에서 선택하기"
           raised
           icon={
             <View style={{ marginRight: 10 }}>
@@ -151,14 +151,31 @@ class CameraScreen extends Component {
             </View>
           }>
         </Button>
-        <Button 
-type="clear"
-title='로그인 페이지로'
-titleStyle={{color:'orange'}}
-onPress={()=> this.props.navigation.navigate('LoginScreen')}
-/>
+
       </View>
+      <View style={{margin:30}}></View>
+
+        {image && <Text style={{fontSize:20}}>
+        아래 이미지를 전송하시겠습니까?
+      </Text>}
+        {image && <View style={{margin:10}}></View>}
         {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
+        {image &&  <View style={[{width: "50%", margin: 20, backgroundColor: "white"}]}>
+        <Button
+          buttonStyle={{ backgroundColor: 'orange', height: 50 }}
+          titleStyle={{ fontSize: 23 }}
+
+          onPress={() => {
+              Alert.alert('전송 완료!', '확인을 눌러 봉사 선택 화면으로 돌아갑니다.', [{text:'확인', 
+              onPress:()=>{this.props.navigation.navigate('DashboardScreen');}}] );
+          }}
+
+          title="전송하기"
+          raised
+          >
+        </Button>
+
+      </View>}
 
       </View>
 

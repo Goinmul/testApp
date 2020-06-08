@@ -1,5 +1,5 @@
 import React, { Component, useState } from 'react';
-import { StyleSheet, Text, View, FlatList } from 'react-native';
+import { StyleSheet, Text, View, ScrollView } from 'react-native';
 import * as Google from 'expo-google-app-auth';
 import * as firebase from 'firebase';
 import axios from 'axios'; // will not be used
@@ -38,11 +38,14 @@ class DashboardScreen extends Component {
         },
       }).then((response) => response.json())
         .then((responseInJson) => {
+          
+          // receive the interest categories(관심사 목록) from server
           for (var i = 0; i < responseInJson.length; i++) {
             this.interestCategory.push(responseInJson[i]);
-            this.buttonList.push(<Button title={responseInJson[i].name} raised onPress={()=>{
-            }}></Button>)
           }
+          this.buttonList = this.interestCategory.map(
+          buttonInfo =>(<Button key={buttonInfo.id}>{buttonInfo.name}</Button>)          
+          );
         })
     } catch (e) {
       console.warn(e);
@@ -59,6 +62,10 @@ class DashboardScreen extends Component {
 
     // data to send to the web server
     userSelectedDateTime: null,
+  }
+
+  _renderButtons() {
+    return this.buttonList;
   }
 
   _showDatePicker = () => {
@@ -177,17 +184,8 @@ class DashboardScreen extends Component {
   */
   render() {
 
-    const renderButtons = this.interestCategory.map(
-      (b) => {
-        return <Button key={b.id} title={b.name} onPress={ ()=>{}
-        }></Button>
-      }
-    );
-
     return (
-      <View style={styles.container}>
-       
-
+      <ScrollView >
       <View>
         <DateTimePickerModal
           isVisible={this.state.isDatePickerVisible}
@@ -206,7 +204,7 @@ class DashboardScreen extends Component {
           ></Dialog.Input>
 
           <View backgroundColor='rgb(1, 192, 99)'>
-          <Dialog.Button label="봉사 시간 선택" color='white' onPress={ ()=>{this._showDatePicker(); }}/>
+          <Dialog.Button label="사진 업로드" color='white' onPress={() => this.props.navigation.navigate('CameraScreen')}/>
           </View>
 
           <Dialog.Button title="신청" label="신청" color='rgb(1, 192, 99)' onPress={
@@ -226,8 +224,11 @@ class DashboardScreen extends Component {
           <Dialog.Button label="취소" color='gray' onPress={() => { this.setState({ dialogVisible: false }); }} />
         </Dialog.Container>
 
+<View style={{margin:20}}></View>
+
+
         <Text
-          style={{ color: 'rgb(1, 192, 99)', letterSpacing: 2, fontSize: 45, marginBottom: 30 }}
+          style={{ color: 'rgb(1, 192, 99)', letterSpacing: 2, fontSize: 45, marginBottom: 30, textAlign:"center" }}
         >활동 신청</Text>
 
         <View style={[{ width: "90%", margin: 20, backgroundColor: "white" }]}>
@@ -395,6 +396,14 @@ class DashboardScreen extends Component {
             //this.props.navigation.getParam('userEmail', '로그인 되어있지 않습니다.')
           }
         </Text>
+
+        <Button
+          type="clear"
+          title='테스트스크린으로'
+          titleStyle={{ color: 'blue' }}
+          onPress={() => this.props.navigation.navigate('TestScreen')}
+        />
+
         <Button
           type="clear"
           title='로그인 페이지로'
@@ -408,7 +417,16 @@ class DashboardScreen extends Component {
           titleStyle={{ color: 'red' }}
           onPress={() => this.props.navigation.navigate('CameraScreen')}
         />
-      </View>
+
+        <Button
+          type="clear"
+          title='flatList 페이지로'
+          titleStyle={{ color: 'pink' }}
+          onPress={() => this.props.navigation.navigate('ListScreen')}
+        />
+
+        </ScrollView>
+
     );
   }
 }
